@@ -16,6 +16,7 @@ WHATSAPP_ICON = (1246, 1050)
 CHAT_START = (541, 169)
 CHAT_END = (1828, 918)
 INPUT_BOX = (634, 970)   
+SEND_BUTTON = (1868, 968)
 
 client = genai.Client(api_key=os.environ["GOOGLE_API_KEY"])
 
@@ -79,7 +80,7 @@ def send_reply(text):
     pydirectinput.press('v')
     pydirectinput.keyUp('ctrl')
     time.sleep(0.3)
-    pydirectinput.press('enter')
+    pyautogui.click(*SEND_BUTTON)
 
 if __name__ == "__main__":
     profile, examples = load_context()
