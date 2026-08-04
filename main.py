@@ -9,8 +9,6 @@ import os
 import google.generativeai as genai
 
 
-
-
 pydirectinput.FAILSAFE = True
 
 WHATSAPP_ICON = (1246, 1050)
@@ -25,7 +23,7 @@ model = genai.GenerativeModel("gemini-2.5-flash")
 def load_context():
     with open("profile.txt", "r", encoding="utf-8") as f:
         profile = f.read()
-    with open("chat_examples.txt", "r", encoding="utf-8") as f:
+    with open("chat.txt", "r", encoding="utf-8") as f:
         examples = f.read()
     return profile, examples
 
