@@ -9,7 +9,8 @@ import os
 from google import genai
 
 
-pydirectinput.FAILSAFE = True
+pydirectinput.FAILSAFE = False
+pyautogui.FAILSAFE = False
 
 WHATSAPP_ICON = (1246, 1050)
 CHAT_START = (541, 169)
