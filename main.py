@@ -83,12 +83,27 @@ def send_reply(text):
     pyautogui.click(*SEND_BUTTON)
 
 if __name__ == "__main__":
-    profile, examples = load_context()
-    chat_text = capture_chat()
-    print("Captured chat:\n", chat_text)
+    from rich.console import Console
+    from rich.panel import Panel
+    from rich.text import Text
 
-    reply = generate_reply(chat_text, profile, examples)
-    print("Generated reply:\n", reply)
+    console = Console()
+    console.clear()
+    
+    with console.status("[bold cyan]Capturing chat from WhatsApp...", spinner="bouncingBar"):
+        profile, examples = load_context()
+        chat_text = capture_chat()
 
-    send_reply(reply)
-    print("Sent.")
+    with console.status("[bold yellow]AI is typing the perfect reply...", spinner="bouncingBar"):
+        reply = generate_reply(chat_text, profile, examples)
+
+    with console.status("[bold magenta]Sending message...", spinner="bouncingBar"):
+        send_reply(reply)
+        
+    success_panel = Panel(
+        Text(" Message Sent Successfully! ", style="bold green", justify="center"),
+        border_style="green",
+        expand=False,
+        padding=(1, 5)
+    )
+    console.print(success_panel)
