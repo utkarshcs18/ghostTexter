@@ -64,9 +64,9 @@ Write ONLY the next reply message, in their exact texting style.
 No explanations, no quotes, just the message text."""
 
     response = client.models.generate_content(
-        model="gemini-3.5-flash",
-        contents=prompt
-    )
+    model="gemini-3.5-flash",
+    contents=prompt
+)
     return response.text.strip()
 
 def send_reply(text):
