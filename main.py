@@ -48,6 +48,8 @@ def capture_chat():
     pydirectinput.press('c')
     pydirectinput.keyUp('ctrl')
     time.sleep(0.3)
+    pyautogui.click(*INPUT_BOX)
+    time.sleep(0.3)
     return pyperclip.paste()
 
 def generate_reply(chat_text, profile, examples):
