@@ -14,7 +14,7 @@ pydirectinput.FAILSAFE = True
 WHATSAPP_ICON = (1246, 1050)
 CHAT_START = (541, 169)
 CHAT_END = (1828, 918)
-INPUT_BOX = (6340, 970)   
+INPUT_BOX = (634, 970)   
 
 
 genai.configure(api_key=os.environ["GOOGLE_API_KEY"])
