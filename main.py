@@ -17,7 +17,7 @@ CHAT_END = (1828, 918)
 INPUT_BOX = (634, 970)   
 
 client = genai.Client(api_key=os.environ["GOOGLE_API_KEY"])
-model = genai.GenerativeModel("gemini-2.5-flash") 
+
 def load_context():
     with open("profile.txt", "r", encoding="utf-8") as f:
         profile = f.read()
