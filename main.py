@@ -78,10 +78,8 @@ def send_reply(text):
     pyautogui.click(*INPUT_BOX)
     time.sleep(0.3)
     pyperclip.copy(text)
-    pydirectinput.keyDown('ctrl')
-    pydirectinput.press('v')
-    pydirectinput.keyUp('ctrl')
-    time.sleep(0.3)
+    pyautogui.hotkey('ctrl', 'v')
+    time.sleep(0.5)
     pyautogui.click(*SEND_BUTTON)
 
 if __name__ == "__main__":
