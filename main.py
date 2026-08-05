@@ -13,7 +13,8 @@ pydirectinput.FAILSAFE = False
 pyautogui.FAILSAFE = False
 
 WHATSAPP_ICON = (1246, 1050)
-CHAT_START = (541, 169)
+FIRST_CHAT = (228,378)
+CHAT_START = (541, 203)
 CHAT_END = (1828, 918)
 INPUT_BOX = (634, 970)   
 SEND_BUTTON = (1868, 968)
@@ -42,7 +43,7 @@ def drag_select(start, end, steps=40, step_delay=0.02):
 
 def capture_chat():
     pyautogui.click(*WHATSAPP_ICON)
-    time.sleep(2)
+    time.sleep(6)
     drag_select(CHAT_START, CHAT_END)
     pydirectinput.keyDown('ctrl')
     pydirectinput.press('c')
