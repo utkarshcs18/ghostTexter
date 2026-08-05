@@ -29,16 +29,16 @@ ghostTexter/
 
 ---
 
-## 📋 Prerequisites
+##  Prerequisites
 
 - **Operating System**: Windows (configured for Windows command execution and standard shortcuts).
 - **Python**: Python 3.8 or higher.
-- **WhatsApp**: WhatsApp Desktop app or WhatsApp Web running on screen.
+- **WhatsApp**: WhatsApp Desktop app.
 - **Google Gemini API Key**: An active API key from [Google AI Studio](https://aistudio.google.com/).
 
 ---
 
-## ⚙️ Installation
+##  Installation
 
 1. **Clone the repository**:
    ```bash
@@ -60,7 +60,7 @@ ghostTexter/
 
 ---
 
-## 🔧 Configuration & Coordinate Setup
+##  Configuration & Coordinate Setup
 
 GhostTexter interacts with WhatsApp using screen coordinates. Because display resolutions vary, you need to map out the exact pixel coordinates for your setup.
 
@@ -76,7 +76,7 @@ while True:
 ```
 
 Hover your mouse over the following elements on your screen and note their `(X, Y)` coordinates:
-1. **First Chat**: Location of the target chat in the left list.
+1. **First Chat**: Location of the new chat in the left list.
 2. **Chat Start**: Top-left corner of the message history area to start text selection.
 3. **Chat End**: Bottom-right corner of the message history area to end text selection.
 4. **Input Box**: WhatsApp message input text area.
@@ -99,9 +99,9 @@ SEND_BUTTON = (1868, 968)
 
 ---
 
-## 🚀 Usage
+##  Usage
 
-1. Open WhatsApp Desktop or Web on your screen.
+1. Open WhatsApp Desktop on your screen.
 2. Run `main.py`:
    ```bash
    python main.py
@@ -115,7 +115,7 @@ SEND_BUTTON = (1868, 968)
 
 ---
 
-## ⚠️ Disclaimer
+##  Disclaimer
 
 - This application performs automated mouse clicks and keystrokes. Avoid manual mouse/keyboard interaction while the script executes.
 - Use responsibly and in accordance with WhatsApp's Terms of Service.
