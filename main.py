@@ -12,7 +12,6 @@ from google import genai
 pydirectinput.FAILSAFE = False
 pyautogui.FAILSAFE = False
 
-WHATSAPP_ICON = (1246, 1050)
 FIRST_CHAT = (228,378)
 CHAT_START = (541, 203)
 CHAT_END = (1828, 918)
@@ -42,8 +41,8 @@ def drag_select(start, end, steps=40, step_delay=0.02):
     time.sleep(0.3)
 
 def capture_chat():
-    pyautogui.click(*WHATSAPP_ICON)
-    time.sleep(4)
+    os.system(os.environ.get("WHATSAPP_START", "start:"))
+    time.sleep(2)
     pyautogui.click(*FIRST_CHAT)
     time.sleep(0.5)
     

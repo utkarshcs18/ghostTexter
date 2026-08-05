@@ -28,9 +28,10 @@ GhostTexter is an automated, AI-powered WhatsApp auto-responder. It uses compute
    pip install pydirectinput pyautogui pyperclip python-dotenv google-genai rich
    ```
 
-3. Create a `.env` file in the root directory and add your Google API Key:
+3. Create a `.env` file in the root directory and add your configuration variables:
    ```env
    GOOGLE_API_KEY=your_api_key_here
+   WHATSAPP_START=start whatsapp:
    ```
 
 ## Configuration
@@ -48,7 +49,7 @@ Hover over the necessary elements in WhatsApp to find their coordinates.
 
 ### 2. Update `main.py`
 Open `main.py` and update the following variables with your screen's specific coordinates:
-- `WHATSAPP_ICON`: Coordinate to click on the WhatsApp window/icon to focus it.
+- `FIRST_CHAT`: Coordinate to click on the first chat (if your script uses it).
 - `CHAT_START`: The top-left coordinate to start selecting the chat history.
 - `CHAT_END`: The bottom-right coordinate to end selecting the chat history.
 - `INPUT_BOX`: Coordinate of the text input box where messages are typed.
