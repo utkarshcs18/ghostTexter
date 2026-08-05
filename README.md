@@ -1,73 +1,121 @@
-# GhostTexter
+# ghostTexter
 
-GhostTexter is an automated, AI-powered WhatsApp auto-responder. It uses computer vision/GUI automation (`pyautogui` & `pydirectinput`) to capture incoming messages from your WhatsApp screen and generates contextual, personality-driven replies using the Google Gemini AI API. It then automatically types and sends the message for you.
+GhostTexter is an automated, AI-powered WhatsApp auto-responder built with Python. It uses screen coordinates and GUI automation (`pyautogui` and `pydirectinput`) to capture incoming chat messages from WhatsApp Desktop, processes them using Google's **Gemini 3.5 Flash** model along with a custom user persona, and automatically types and sends personalized responses.
 
-## Features
+---
 
-- **Automated Chat Capture**: Uses GUI automation to copy the latest messages from WhatsApp.
-- **AI-Powered Replies**: Uses Google's Gemini 3.5 Flash model to generate intelligent responses.
-- **Personality Mimicry**: Tailor the AI's texting style using `profile.txt` and `chat.txt` to sound exactly like you (or any persona you choose).
-- **Rich Console UI**: Uses `rich` to provide a visually pleasing status output in the terminal.
+##  Features
 
-## Prerequisites
+- **GUI Automation**: Uses `pyautogui` and `pydirectinput` for smooth mouse movement, chat text selection, and keyboard shortcuts.
+- **AI Persona Mimicry**: Tailor AI replies to match your exact texting style, tone, vocabulary, and background using `profile.txt` and `chat.txt`.
+- **Google Gemini Integration**: Built on Google's official `google-genai` SDK (`gemini-3.5-flash` model) with automatic retry handling for API availability.
+- **Rich Terminal Interface**: Features progress spinners and status panels powered by the `rich` library.
+- **Custom Coordinate Mapping**: Easy setup helper script to inspect mouse position and adapt to any display resolution.
 
-- Python 3.x
-- Google Gemini API Key
-- WhatsApp Desktop or WhatsApp Web open on your screen
+---
 
-## Installation
+##  Repository Structure
 
-1. Clone the repository:
+```text
+ghostTexter/
+├── main.py          # Main execution script (GUI automation & Gemini AI integration)
+├── profile.txt      # Persona definition, texting rules, and user context
+├── chat.txt         # Few-shot example chat conversations for style matching
+├── setup.txt        # Helper script to find screen coordinates for WhatsApp UI
+├── .env             # Environment variables (API keys & WhatsApp launcher command)
+├── .gitignore       # Git ignore rules for virtual environments, cache, and secrets
+└── README.md        # Project documentation
+```
+
+---
+
+## 📋 Prerequisites
+
+- **Operating System**: Windows (configured for Windows command execution and standard shortcuts).
+- **Python**: Python 3.8 or higher.
+- **WhatsApp**: WhatsApp Desktop app or WhatsApp Web running on screen.
+- **Google Gemini API Key**: An active API key from [Google AI Studio](https://aistudio.google.com/).
+
+---
+
+## ⚙️ Installation
+
+1. **Clone the repository**:
    ```bash
-   git clone <your-repo-url>
+   git clone <your-repository-url>
    cd ghostTexter
    ```
 
-2. Install the required Python packages:
+2. **Install dependencies**:
    ```bash
    pip install pydirectinput pyautogui pyperclip python-dotenv google-genai rich
    ```
 
-3. Create a `.env` file in the root directory and add your configuration variables:
+3. **Configure Environment Variables**:
+   Create a `.env` file in the root directory:
    ```env
-   GOOGLE_API_KEY=your_api_key_here
+   GOOGLE_API_KEY=your_gemini_api_key_here
    WHATSAPP_START=start whatsapp:
    ```
 
-## Configuration
+---
 
-Because GhostTexter relies on screen coordinates to interact with WhatsApp, you must configure the exact pixel locations for your specific monitor setup.
+## 🔧 Configuration & Coordinate Setup
 
-### 1. Find Your Screen Coordinates
-You can use the provided script in `setup.txt` to find the exact X, Y coordinates of your mouse on the screen. Run a simple python script with:
+GhostTexter interacts with WhatsApp using screen coordinates. Because display resolutions vary, you need to map out the exact pixel coordinates for your setup.
+
+### 1. Find Screen Coordinates
+Run the helper script snippet in `setup.txt` to display your mouse cursor coordinates in real-time:
+
 ```python
 import pyautogui
+
 while True:
-    print(pyautogui.position())
+    pos = pyautogui.position()
+    print(pos)
 ```
-Hover over the necessary elements in WhatsApp to find their coordinates.
+
+Hover your mouse over the following elements on your screen and note their `(X, Y)` coordinates:
+1. **First Chat**: Location of the target chat in the left list.
+2. **Chat Start**: Top-left corner of the message history area to start text selection.
+3. **Chat End**: Bottom-right corner of the message history area to end text selection.
+4. **Input Box**: WhatsApp message input text area.
+5. **Send Button**: Send button location.
 
 ### 2. Update `main.py`
-Open `main.py` and update the following variables with your screen's specific coordinates:
-- `FIRST_CHAT`: Coordinate to click on the first chat (if your script uses it).
-- `CHAT_START`: The top-left coordinate to start selecting the chat history.
-- `CHAT_END`: The bottom-right coordinate to end selecting the chat history.
-- `INPUT_BOX`: Coordinate of the text input box where messages are typed.
-- `SEND_BUTTON`: Coordinate of the send button.
+Open `main.py` and update the coordinate constants with your measured values:
 
-### 3. Customize Your AI Persona
-- **`profile.txt`**: Define the personality, tone, and rules the AI should follow when generating replies (e.g., "Sarcastic, short sentences, Hinglish").
-- **`chat.txt`**: Provide some example messages to give the AI context on how you typically text.
+```python
+FIRST_CHAT = (X1, Y1)
+CHAT_START = (X2, Y2)
+CHAT_END   = (X3, Y3)
+INPUT_BOX  = (X4, Y4)   
+SEND_BUTTON = (1868, 968)
+```
 
-## Usage
+### 3. Customize Personality & Style
+- **`profile.txt`**: Define your persona, role, texting rules (e.g. Hinglish mix, sentence brevity, emoji limits), and facts about yourself.
+- **`chat.txt`**: Provide example message exchanges to give the AI context on how you typically format and respond to texts.
 
-1. Ensure WhatsApp is visible on your screen and open to the chat you want to respond to.
-2. Run the script:
+---
+
+## 🚀 Usage
+
+1. Open WhatsApp Desktop or Web on your screen.
+2. Run `main.py`:
    ```bash
    python main.py
    ```
-3. Do not move your mouse! The script will take control to highlight the chat, copy it, generate a reply, and send it automatically.
+3. **Do not move your mouse** while the script is running. GhostTexter will:
+   - Open/focus WhatsApp via `WHATSAPP_START`.
+   - Click the chat item and drag-select the recent messages.
+   - Copy the chat text to the clipboard.
+   - Generate a reply using Gemini AI.
+   - Paste the reply into the input box and click Send.
 
-## Disclaimer
+---
 
-This tool uses mouse and keyboard automation. Ensure you do not interfere with the mouse while the script is running. Use responsibly and in accordance with WhatsApp's terms of service.
+## ⚠️ Disclaimer
+
+- This application performs automated mouse clicks and keystrokes. Avoid manual mouse/keyboard interaction while the script executes.
+- Use responsibly and in accordance with WhatsApp's Terms of Service.
