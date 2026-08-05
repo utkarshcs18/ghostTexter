@@ -65,7 +65,7 @@ ghostTexter/
 GhostTexter interacts with WhatsApp using screen coordinates. Because display resolutions vary, you need to map out the exact pixel coordinates for your setup.
 
 ### 1. Find Screen Coordinates
-Run the helper script snippet in `setup.txt` to display your mouse cursor coordinates in real-time:
+Run the helper script snippet in `setup.py` to display your mouse cursor coordinates in real-time:
 
 ```python
 import pyautogui
