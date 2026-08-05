@@ -43,7 +43,13 @@ def drag_select(start, end, steps=40, step_delay=0.02):
 
 def capture_chat():
     pyautogui.click(*WHATSAPP_ICON)
-    time.sleep(6)
+    time.sleep(4)
+    pyautogui.click(*FIRST_CHAT)
+    time.sleep(0.5)
+    
+    pyautogui.click(*CHAT_START)
+    time.sleep(0.5)
+    
     drag_select(CHAT_START, CHAT_END)
     pydirectinput.keyDown('ctrl')
     pydirectinput.press('c')
@@ -68,12 +74,19 @@ CHAT HISTORY (most recent messages, respond to the latest one):
 Write ONLY the next reply message, in their exact texting style.
 No explanations, no quotes, just the message text."""
 
-    response = client.models.generate_content(
-    model="gemini-3.5-flash",
-    contents=prompt
-    )
-    
-    return response.text.strip()
+    for attempt in range(5):
+        try:
+            response = client.models.generate_content(
+                model="gemini-3.5-flash",
+                contents=prompt
+            )
+            return response.text.strip()
+        except Exception as e:
+            if "503" in str(e) or "UNAVAILABLE" in str(e):
+                time.sleep(5)
+            else:
+                raise e
+    return "Error: API is too busy right now."
 
 def send_reply(text):
     pyautogui.click(*INPUT_BOX)
