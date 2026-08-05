@@ -90,7 +90,7 @@ FIRST_CHAT = (X1, Y1)
 CHAT_START = (X2, Y2)
 CHAT_END   = (X3, Y3)
 INPUT_BOX  = (X4, Y4)   
-SEND_BUTTON = (1868, 968)
+SEND_BUTTON = (X5, Y5)
 ```
 
 ### 3. Customize Personality & Style
