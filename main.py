@@ -41,8 +41,8 @@ def drag_select(start, end, steps=40, step_delay=0.02):
     time.sleep(0.3)
 
 def capture_chat():
-    os.system(os.environ.get("WHATSAPP_START", "start:"))
-    time.sleep(2)
+    os.system(os.environ["WHATSAPP_START"])
+    time.sleep(6)
     pyautogui.click(*FIRST_CHAT)
     time.sleep(0.5)
     
