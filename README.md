@@ -76,7 +76,7 @@ while True:
 ```
 
 Hover your mouse over the following elements on your screen and note their `(X, Y)` coordinates:
-1. **First Chat**: Location of the new chat in the left list.
+1. **First Chat**: Location of the recent chat in the left list.
 2. **Chat Start**: Top-left corner of the message history area to start text selection.
 3. **Chat End**: Bottom-right corner of the message history area to end text selection.
 4. **Input Box**: WhatsApp message input text area.
