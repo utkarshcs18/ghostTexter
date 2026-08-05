@@ -4,7 +4,7 @@ GhostTexter is an automated, AI-powered WhatsApp auto-responder built with Pytho
 
 ---
 
-##  Features
+## Features
 
 - **GUI Automation**: Uses `pyautogui` and `pydirectinput` for smooth mouse movement, chat text selection, and keyboard shortcuts.
 - **AI Persona Mimicry**: Tailor AI replies to match your exact texting style, tone, vocabulary, and background using `profile.txt` and `chat.txt`.
@@ -14,7 +14,7 @@ GhostTexter is an automated, AI-powered WhatsApp auto-responder built with Pytho
 
 ---
 
-##  Repository Structure
+## Repository Structure
 
 ```text
 ghostTexter/
@@ -29,7 +29,7 @@ ghostTexter/
 
 ---
 
-##  Prerequisites
+## Prerequisites
 
 - **Operating System**: Windows (configured for Windows command execution and standard shortcuts).
 - **Python**: Python 3.8 or higher.
@@ -38,7 +38,7 @@ ghostTexter/
 
 ---
 
-##  Installation
+## Installation
 
 1. **Clone the repository**:
    ```bash
@@ -60,7 +60,7 @@ ghostTexter/
 
 ---
 
-##  Configuration & Coordinate Setup
+## Configuration & Coordinate Setup
 
 GhostTexter interacts with WhatsApp using screen coordinates. Because display resolutions vary, you need to map out the exact pixel coordinates for your setup.
 
@@ -86,10 +86,10 @@ Hover your mouse over the following elements on your screen and note their `(X, 
 Open `main.py` and update the coordinate constants with your measured values:
 
 ```python
-FIRST_CHAT = (X1, Y1)
-CHAT_START = (X2, Y2)
-CHAT_END   = (X3, Y3)
-INPUT_BOX  = (X4, Y4)   
+FIRST_CHAT =  (X1, Y1)
+CHAT_START =  (X2, Y2)
+CHAT_END   =  (X3, Y3)
+INPUT_BOX  =  (X4, Y4)   
 SEND_BUTTON = (X5, Y5)
 ```
 
@@ -99,12 +99,12 @@ SEND_BUTTON = (X5, Y5)
 
 ---
 
-##  Usage
+## Usage
 
 1. Open WhatsApp Desktop on your screen.
 2. Run `main.py`:
    ```bash
-   python main.py
+   py main.py
    ```
 3. **Do not move your mouse** while the script is running. GhostTexter will:
    - Open/focus WhatsApp via `WHATSAPP_START`.
@@ -115,7 +115,7 @@ SEND_BUTTON = (X5, Y5)
 
 ---
 
-##  Disclaimer
+## Disclaimer
 
 - This application performs automated mouse clicks and keystrokes. Avoid manual mouse/keyboard interaction while the script executes.
 - Use responsibly and in accordance with WhatsApp's Terms of Service.
