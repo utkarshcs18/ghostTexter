@@ -3,6 +3,6 @@
 import pyautogui
 
 while True:
-    a= pyautogui.position()
-    print(a)
+    pos = pyautogui.position()
+    print(pos)
 
